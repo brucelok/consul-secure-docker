@@ -15,7 +15,7 @@ services:
           /bin/consul tls cert create -server -dc dc1
           "
   consul-server1:
-    image: hashicorp/consul-enterprise:1.22.2-ent
+    image: hashicorp/consul:1.22.2
     container_name: consul-server1
     restart: always
     depends_on:
@@ -25,7 +25,7 @@ services:
      - ./server1.hcl:/consul/config/server1.hcl
      - ./acl.hcl:/consul/config/acl.hcl
      - ./certs/:/consul/config/certs/
-     - ./license.hclic:/consul/config/license.hclic
+     #- ./license.hclic:/consul/config/license.hclic
     networks:
       - consul
     ports:
@@ -36,7 +36,7 @@ services:
     command: "agent -bootstrap-expect=3"
 
   consul-server2:
-    image: hashicorp/consul-enterprise:1.22.2-ent
+    image: hashicorp/consul:1.22.2
     container_name: consul-server2
     restart: always
     depends_on:
@@ -46,13 +46,13 @@ services:
      - ./server2.hcl:/consul/config/server2.hcl
      - ./acl.hcl:/consul/config/acl.hcl
      - ./certs/:/consul/config/certs/
-     - ./license.hclic:/consul/config/license.hclic
+     #- ./license.hclic:/consul/config/license.hclic
     networks:
       - consul
     command: "agent -bootstrap-expect=3"
 
   consul-server3:
-    image: hashicorp/consul-enterprise:1.22.2-ent
+    image: hashicorp/consul:1.22.2
     container_name: consul-server3
     restart: always
     depends_on:
@@ -62,13 +62,13 @@ services:
      - ./server3.hcl:/consul/config/server3.hcl
      - ./acl.hcl:/consul/config/acl.hcl
      - ./certs/:/consul/config/certs/
-     - ./license.hclic:/consul/config/license.hclic
+     #- ./license.hclic:/consul/config/license.hclic
     networks:
       - consul
     command: "agent -bootstrap-expect=3"
 
   consul-client1:
-    image: hashicorp/consul-enterprise:1.22.2-ent
+    image: hashicorp/consul:1.22.2
     container_name: consul-client1
     restart: always
     depends_on:

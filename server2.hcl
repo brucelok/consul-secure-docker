@@ -45,4 +45,4 @@ auto_encrypt {
   allow_tls = true
 }
 
-license_path = "/consul/config/license.hclic"
+#license_path = "/consul/config/license.hclic"

@@ -12,4 +12,12 @@ No manual CA or cert generation needed
 
 Also it comes with a pre-generated bootstrap token sitting inside `acl.hcl`, so you can skip the whole consul acl bootstrap. Just `docker compose up` and you're good.
 
-If you use Consul community edition, change to non-enterprise `hashicorp/consul:1.22.2`, and comment out the license option `license_path` in server configuration. Otherwise, drop your enterprise license into the directory.
+If you use Consul Enterprise edition:
+- drop your enterprise license into the directory
+- change to enterprise image `hashicorp/consul-enterprise:1.22.2-ent`, 
+- uncomment the license option `license_path` in server configuration. 
+
+Once it's up, check the status:
+```
+consul operator raft list-peers -token=root
+```
